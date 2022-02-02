@@ -1,3 +1,4 @@
 # SAACHostel
-Visual Studio 2022
-Обязательно: Entity Framework Core, NET.Core 6
+IDE - Visual Studio Enterprice 2022
+Среда выполнения - .NET 6
+Таргет - .NET Framework 4.8
