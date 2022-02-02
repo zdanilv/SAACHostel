@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAACHostel", "SAACHostel\SAACHostel.csproj", "{ABA590B2-06B8-46FB-999B-A1E0AE0CFED5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABA590B2-06B8-46FB-999B-A1E0AE0CFED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA590B2-06B8-46FB-999B-A1E0AE0CFED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA590B2-06B8-46FB-999B-A1E0AE0CFED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA590B2-06B8-46FB-999B-A1E0AE0CFED5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD365BBD-1D91-4FF7-8483-70E44313F5BB}
+	EndGlobalSection
+EndGlobal

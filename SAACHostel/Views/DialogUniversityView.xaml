@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="SAACHostel.Views.DialogUniversityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SAACHostel.Views"
+             mc:Ignorable="d" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignWidth="600">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Университет" FontSize="18"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Информация об университете:"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="15">
+                <TextBlock Text="Факультеты:"/>
+                <Grid Margin="5">
+                    <ListView Name="ListViewFaculty" ItemsSource="{Binding FacultyItems}" SelectedItem="SelectedFacultyItem">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction 
+                        Command="{Binding SelectedFacultyItemCommand}"
+                        CommandParameter="{Binding ElementName=ListViewFaculty, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="True">
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=ID}" Header="Номер"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Date_Create, StringFormat=\{0:dd.MM.yy\}}" Header="Дата создания"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Full_Name}" Header="Наименование" Width="100"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Full_Name_Decan}" Header="ФИО Декана" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Phone_Decan}" Header="Телефон Декана"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Short_Name}" Header="Аббривиатура"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+                <Expander Header="Добавить" IsExpanded="{Binding IsExpandedFacultyAdd}">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Наименование:" Margin="5" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyFullName}" Margin="5" Grid.Column="1" Grid.Row="0"/>
+
+                            <TextBlock Text="ФИО Декана" Margin="5" Grid.Column="0" Grid.Row="1"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyDecanFullName}" Margin="5" Grid.Column="1" Grid.Row="1"/>
+
+                            <TextBlock Text="Телефон Декана" Margin="5" Grid.Column="0" Grid.Row="2"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyPhoneDecan}" Margin="5" Grid.Column="1" Grid.Row="2"/>
+
+                            <TextBlock Text="Аббривиатура" Margin="5" Grid.Column="0" Grid.Row="3"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyShortName}" Margin="5" Grid.Column="1" Grid.Row="3"/>
+                        </Grid>
+                        <Button Content="Добавить" Width="75" HorizontalAlignment="Left" Margin="5" Command="{Binding AddFacultyCommand}"/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Изменить" IsEnabled="{Binding IsEnableChangeFaculty}" IsExpanded="{Binding IsExpandedFacultyChange}">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Наименование:" Margin="5" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyFullName}" Margin="5" Grid.Column="1" Grid.Row="0"/>
+
+                            <TextBlock Text="ФИО Декана" Margin="5" Grid.Column="0" Grid.Row="1"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyDecanFullName}" Margin="5" Grid.Column="1" Grid.Row="1"/>
+
+                            <TextBlock Text="Телефон Декана" Margin="5" Grid.Column="0" Grid.Row="2"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyPhoneDecan}" Margin="5" Grid.Column="1" Grid.Row="2"/>
+
+                            <TextBlock Text="Аббривиатура" Margin="5" Grid.Column="0" Grid.Row="3"/>
+                            <TextBox MinWidth="100" Text="{Binding FacultyShortName}" Margin="5" Grid.Column="1" Grid.Row="3"/>
+                        </Grid>
+                        <Button Content="Изменить" Width="75" HorizontalAlignment="Left" Margin="5" Command="{Binding ChangeFacultyCommand}"/>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="15">
+                <TextBlock Text="Специальности:"/>
+                <Grid Margin="5">
+                    <ListView Name="ListViewSpecialty" ItemsSource="{Binding SpecialtyItems}" SelectedItem="SelectedSpecialtyItem">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction 
+                        Command="{Binding SelectedSpecialtyItemCommand}"
+                        CommandParameter="{Binding ElementName=ListViewSpecialty, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="True">
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=ID}" Header="Номер"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Date_Create, StringFormat=\{0:dd.MM.yy\}}" Header="Дата создания"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Full_Name}" Header="Наименование"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Short_Name}" Header="Аббривиатура"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+                <Expander Header="Добавить" IsExpanded="{Binding IsExpandedSpecialtyAdd}">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Наименование:" Margin="5" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox MinWidth="100" Text="{Binding SpecialtyFullName}" Margin="5" Grid.Column="1" Grid.Row="0"/>
+
+                            <TextBlock Text="Аббривиатура" Margin="5" Grid.Column="0" Grid.Row="1"/>
+                            <TextBox MinWidth="100" Text="{Binding SpecialtyShortName}" Margin="5" Grid.Column="1" Grid.Row="1"/>
+                        </Grid>
+                        <Button Content="Добавить" Width="75" HorizontalAlignment="Left" Margin="5" Command="{Binding AddSpecialtyCommand}"/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Изменить" IsEnabled="{Binding IsEnableChangeSpecialty}" IsExpanded="{Binding IsExpandedSpecialtyChange}">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Наименование:" Margin="5" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox MinWidth="100" Text="{Binding SpecialtyFullName}" Margin="5" Grid.Column="1" Grid.Row="0"/>
+
+                            <TextBlock Text="Аббривиатура" Margin="5" Grid.Column="0" Grid.Row="1"/>
+                            <TextBox MinWidth="100" Text="{Binding SpecialtyShortName}" Margin="5" Grid.Column="1" Grid.Row="1"/>
+                        </Grid>
+                        <Button Content="Изменить" Width="75" HorizontalAlignment="Left" Margin="5" Command="{Binding ChangeSpecialtyCommand}"/>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

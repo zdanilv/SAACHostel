@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="SAACHostel.Views.DialogAboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SAACHostel.Views"
+             mc:Ignorable="d" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="5">
+            <TextBlock Text="О Программе" FontSize="18"/>
+            <StackPanel Orientation="Vertical" Margin="0,50,0,50">
+                <TextBlock Text="Чувашский государственный педагогический университет" HorizontalAlignment="Center"/>
+                <TextBlock Text="Физико-математический факультет" HorizontalAlignment="Center"/>
+                <TextBlock Text="Специальность - ПИвГМУ" HorizontalAlignment="Center"/>
+                <TextBlock Text="Группа - ПИ-4 (з/о)" HorizontalAlignment="Center"/>
+                <TextBlock Text="Автор - Захаров Даниил Владимирович" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="2022" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

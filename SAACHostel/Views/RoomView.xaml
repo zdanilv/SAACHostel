@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="SAACHostel.Views.RoomView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SAACHostel.Views"
+             mc:Ignorable="d" 
+             xmlns:localModels="clr-namespace:SAACHostel.Models"
+             xmlns:localViewModels="clr-namespace:SAACHostel.ViewModels"
+             xmlns:prism="http://prismlibrary.com/" 
+             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Width="1000"
+             MinHeight="500">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadData}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type dragablz:HeaderedItemViewModel}">
+                <ContentControl Content="{Binding Content}" Margin="4 4 4 4" FontSize="14" />
+            </DataTemplate>
+            <Style TargetType="{x:Type dragablz:TabablzControl}" x:Key="TabablzControlStyle">
+                
+                <Setter Property="ItemsSource" Value="{Binding Items}" />
+                <Setter Property="ClosingItemCallback" Value="{Binding ClosingTabItemHandler}" />
+                <Setter Property="ShowDefaultAddButton" Value="False" />
+                <Setter Property="ShowDefaultCloseButton" Value="True" />
+                <Setter Property="AdjacentHeaderItemOffset" Value="-5" />
+                <Setter Property="ItemContainerStyle" Value="{StaticResource TrapezoidDragableTabItemStyle}" />
+                <Setter Property="HeaderMemberPath" Value="Header" />
+                <Setter Property="Margin" Value="0 8 0 0" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Margin="5" Content="Добавить запись" Command="{Binding RoomAddCommand}"/>
+            <Button Margin="5" Content="Список записей" Command="{Binding RoomListAddCommand}"/>
+        </StackPanel>
+        <dragablz:TabablzControl Grid.Row="1"
+                                 FixedHeaderCount="1"
+                                 Style="{StaticResource TabablzControlStyle}"
+                                 AddLocationHint="Last">
+        </dragablz:TabablzControl>
+    </Grid>
+</UserControl>
